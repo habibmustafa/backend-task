@@ -3,11 +3,8 @@ const fs = require('fs')
 
 // import express library
 const express = require('express');
-const { join } = require('path');
 const app = express()
 
-// web page..
-let ans = new Array();
 // inside the json file
 let employee;
 
@@ -23,7 +20,7 @@ app.listen(3000, () => {
 // get request
 app.get('/', (req, res) => {
    res.send(
-      employee.filter(item => (item.name && item.age))
+      employee.filter(item => ({...item}))
          .map(item => (`<p>Name: ${item.name}, Age: ${item.age}</p>`)).join('')
    )
 })
