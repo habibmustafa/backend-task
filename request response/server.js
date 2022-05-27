@@ -8,9 +8,13 @@ const app = express()
 // inside the json file
 let product;
 
-// readFile - index.html
-const data = fs.readFileSync('./product.json', 'utf-8')
-product = JSON.parse(data)
+// readFile - product.json
+try {
+   const data = fs.readFileSync('./product.json', 'utf-8')
+   product = JSON.parse(data)
+} catch(err) {
+   console.log(err);
+}
 
 // app listening
 app.listen(3000, () => {
